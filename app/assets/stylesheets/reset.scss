@@ -1,0 +1,140 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+hr {
+  height: 2px;
+  border: none;
+  border-radius: 50%;
+  width: 100%;
+}
+
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// this is to make sure that autocomplete does not mess with
+// the styling of any input box; this is kind of a hack...
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+html {
+  height: 100vh;
+  position: relative;
+  // this is for the forefround forms that 
+  // also take up the whole screen
+  // I want html to be the parent of those forms
+
+  min-width: 280px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  justify-content: center;
+  // border: 3px solid red;
+}
+
+#root {
+  height: 100%;
+  // border: 3px solid yellow;
+  box-sizing: border-box;
+}
+
+.app {
+  // this is so the height of the window never affects the the contents of the app
+  // THIS DOESN'T TRANSLATE WELL INTO MOBILE BUT IT'S GOOD FOR NOW...
+  // min-height: 766px;
+  // UPDATE: i needed to take it off for now since the heights for mobile
+  // were severly affecting how they looked.  gotta figure out how to have 
+  // fixed heights for the desktop (like how YouTube does) while keeping 
+  // the mobile version looking normal
+
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
+  height: 100%;
+
+  textarea {
+    resize: none;
+    height: 100px;
+    padding: 10px;
+  }
+
+  > .page-refetch-button-container {
+      height: calc(100% - 71px);
+  }
+
+  > .loading-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.app-header-container {
+  width: 100%;
+}
+
+.word-counter {
+  width: 100%;
+  font-weight: bolder;
+}
+
+@media all and (min-width: 500px) {
+  .header-nav-list li:first-child a {
+    display: flex;
+  }
+
+  .app-title {
+    display: initial;
+  }
+}

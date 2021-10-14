@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <title>Bug Off</title>
+    
+    <% if logged_in? %>
+        <script type="text/javascript">
+            window.currentUser = <%= 
+                render("sessions/session_user.json.jbuilder", user: current_user).html_safe
+            %>
+        </script>
+        <script type="text/javascript">
+            window.logo = "<%= image_url('bug_off_logo.svg') %>"
+        </script>
+
+        <script type="text/javascript">
+            window.profile_pic = "<%= image_url('default_profile_picture.svg') %>"
+        </script>
+    <% end %>
+</head>
+<body>
+    <div id="root"></div>  
+</body>
+</html>

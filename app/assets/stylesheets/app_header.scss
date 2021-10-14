@@ -1,0 +1,491 @@
+
+.app-header {
+  padding: 10px;
+}
+
+.small-app-logo {
+  width: 45px;
+  height: auto;
+}
+
+.header-nav-list {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav-list > li:first-of-type {
+  display: flex;
+  align-items: center;
+  // there is a small push up that the logo
+  // experiences when the window size is shortened
+  // align-items: center; is there to prevent that
+
+  // i don't know how i did it but i was able to overflow the projects drop down
+  // whenever the avatar starting overtaking it while also accounting for 
+  // content length
+  // i assume flex is for how much space is taken up while taking
+  // project-option-list parent's width into consideration (rules right below)
+  flex: 1;
+
+  // this is what solved my problem.
+  // idk how this works but it just does...
+  // maybe width is 100% of what space flex is taking up?
+
+  // so for instance, if the an element is flex: 1 and the width of that element
+  // is 400px, then width: 100% is equal is 400px
+
+  // i know I subtract 49px so the avatar isn't left outside the header
+  // when we start shrinking the window size
+  width: calc(100% - 49px);
+  // originally it was 45px (the width of the app logo)
+  // but I wanted some space between projects-drop-down and the avatar
+}
+
+// project-option-list parent
+.header-nav-list > li:nth-child(2) {
+  // project-option-list parent will always take up the rest of the space in the header
+  flex: 4;
+}
+
+.projects-drop-down {
+  min-width: 145.61px;
+  // min-width is the width of projects-drop-down when 
+  // the org is personal projects and project titles is projects
+  // i just want a consistent design so it doesn't look weird
+  // when projects-drop-down is extremely thin because the org or project name is short
+  padding: 5px 9px;
+  border-radius: 5px;
+  transition: 0.4s;
+  overflow: hidden;
+  white-space: nowrap;
+  // white-space prevents words from being broken apart
+  // in other words, words stay on one line no matter what
+  // EX: ben is here
+
+  // VS.
+
+  // EX: 
+  // ben
+  // is
+  // here
+
+  > h1 {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+
+    .header-icon  {
+      margin-right: 5px;
+    }
+    
+    span {
+      overflow: hidden;
+    }
+  }
+
+
+  > div {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bolder;
+
+    .loading-container {
+      margin-top: 8px;
+    }
+
+    
+    h1 {
+      overflow: hidden;
+    }
+
+    .header-icon {
+      margin-left: 10px;
+      font-size: 11px;
+    }
+  }
+}
+
+.projects-drop-down-list {
+  position: absolute;
+  z-index: 9999;
+  top: 70px;
+  left: 0;
+  display: flex;
+  min-height: 200px;
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  border-radius: 5px;
+  text-align: left;
+
+  .loading-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
+
+.organizations-section,
+.projects-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  overflow: hidden;
+
+  > div {
+    h1 {
+      padding: 5px 0;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bolder;
+    }
+
+    > .loading-container {
+      top: 40px;
+      bottom: 50px;
+    }
+  }
+
+  footer {
+    margin-top: 5px;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      padding: 5px;
+
+      span:first-of-type {
+        margin-right: 5px;
+      }
+
+      h1 {
+        display: none;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.organizations-section {
+  padding: 10px 10px 10px 0;
+}
+
+.projects-section {
+  padding: 10px 0 10px 10px;
+
+  .page-filler-container {
+    position: absolute;
+    top: 40px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+
+    p {
+      font-size: 20px;
+      text-align: center;
+
+        span {
+          font-size: 50px;
+        }
+    }
+  }
+}
+
+.projects-list,
+.organizations-list {
+  max-height: 225px;
+  overflow: scroll;
+
+
+  .loading-container {
+    bottom: 60px;
+  }
+}
+
+.project-list-item,
+.organization-list-item {
+  overflow: hidden;
+  border-radius: 5px;
+
+  a {
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+.avatar-drop-down {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.text-hover {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  // REMEMBER, margin: 0 auto is used to center
+  // element in whatever parent they belong to!!!
+  z-index: 9999;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.project-option-list {
+  display: flex;
+  justify-content: space-around;
+
+  .project-option-item {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    // position for text hover
+    height: 30px;
+    font-size: 20px;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .project-option-item:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    position: absolute;
+    top: 19px;
+    padding-top: 15px;
+    width: 30%; /* Change this to whatever width you want. */
+    margin: 0 auto; /* This will center the border. */
+    transition: 0.3s;
+    pointer-events: none;
+  }
+
+  .project-option-item:active::after {
+    transition: 0.5s;
+    width: 60%; /* Change this to whatever width you want. */
+  }
+}
+
+// show where a user is currently at when they click a link
+.project-option-list {
+  .active:after {
+    width: 100%;
+  }
+}
+
+.lower-header-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+
+  .project-option-item {
+    a {
+      h1 {
+        display: none;
+      }
+    }
+  }
+
+  .project-option-item:hover {
+    .text-hover {
+      display: initial;
+      top: 45px;
+    }
+  }
+}
+
+.inline-header-options {
+  display: flex;
+  padding: 0 20px;
+
+  .project-option-item {
+    a {
+      .header-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .project-option-item:after {
+    padding-top: 24px;
+  }
+}
+
+.drop-down-nav-container {
+  position: absolute;
+  z-index: 9998;
+  top: 70px;
+  right: 0;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.drop-down-list-item:first-of-type > a {
+  display: flex;
+  padding: 7px;
+  overflow: scroll;
+}
+
+.drop-down-list-item > a,
+.drop-down-list-item > button {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  transition: 0.4s;
+  font-size: 20px;
+  width: 100%;
+}
+
+.setting-icon {
+  transition: 0.4s;
+  font-size: 30px;
+  padding: 7px;
+  margin-right: 10px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+
+.user-profile > p {
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.theme-setting {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.theme-setting > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+// the pointer-events: none is so the icons or divs don't register to js events 
+
+.arrow {
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.theme-drop-down {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.theme-drop-down-item  {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+
+
+// media queries
+
+// wonder how i can make inline-header-options and below-header-options
+// appear and disappear depending on the length of the project name
+
+@media all and (min-width: 320px) {
+  .app-header {
+    padding: 10px 30px;
+  }
+}
+
+@media all and (min-width: 375px) {
+  .organizations-section footer,
+  .projects-section footer {
+    div {
+      justify-content: initial;
+
+      span:nth-child(2) {
+        display: none;
+      }
+
+      h1 {
+        display: initial;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 425px) {
+  .avatar-drop-down {
+    position: relative;
+  }
+
+  .drop-down-nav-container {
+    top: 50px;
+    width: 300px;
+  }
+
+  .drop-down-list-item > a,
+  .drop-down-list-item > button {
+    padding: 10px;
+  }
+
+  .drop-down-list-item:first-of-type > a {
+    justify-content: initial;
+  }
+
+  .user-profile {
+    font-size: 25px;
+  }
+
+  .theme-drop-down  {
+    top: 66px;
+  }
+}
+
+@media all and (min-width: 526px) {
+    .lower-header-options {
+    .project-option-item {
+      a {
+        h1 {
+          display: initial;
+        }
+
+        .header-icon {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .project-option-item:hover {
+      .text-hover {
+        display: none;
+      }
+    }
+
+    .project-option-item:after {
+      padding: 7px;
+    }
+  }
+}

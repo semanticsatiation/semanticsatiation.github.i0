@@ -1,0 +1,42 @@
+.notification-container > .page-refetch-button-container,
+.notification-container > .loading-container,
+.notification-container > .page-filler-container {
+    height: calc(100%);
+}
+
+.notification-container {
+    max-height: calc(100% - 71px); 
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    gap: 15px;
+    margin-top: 5px;
+    text-align: center;
+
+    > li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+
+        .modify-bug-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 230px;
+            margin-top: 5px;
+
+            button {
+                max-width: 90px;
+            }
+        }
+    }
+}

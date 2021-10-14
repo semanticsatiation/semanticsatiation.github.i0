@@ -1,0 +1,131 @@
+.activities-container > .page-refetch-button-container,
+.activities-container > .loading-container,
+.activities-container > .page-filler-container {
+    height: 100%;
+}
+
+.project-activities-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    text-align: center;
+    gap: 15px;
+
+    button {
+        position: relative;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        font-weight: bolder;
+    }
+
+    button:hover {
+        transition: 0.5s;
+    }
+}
+
+.project-activities-list-item-years,
+.project-activities-list-item-activity {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.project-activities-list-item-months {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    max-height: 470px;
+    overflow: scroll;
+}
+
+.project-activities-list-item-month {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+
+    > div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+.project-activities-list-item-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.bug-activities {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    .pagination-list {
+        max-width: 700px;
+    }
+}
+
+.bug-activities-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bug-activities-list-item {
+    padding: 10px;
+}
+
+.pagination-list {
+    display: flex;
+    overflow: scroll;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 30px;
+    margin-top: 10px;
+
+
+    a {
+        padding: 3px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    li {
+        border-radius: 5px;
+    }
+}
+
+.pagination-list-item:hover,
+.prev-pagination:hover,
+.next-pagination:hover {
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.circle-down-icon {
+    position: absolute;
+    // this is the only thing that helped me center the arrow
+    // on years and i got the solution from here
+    // https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element/18486387#18486387
+    // it's weird cause this is the only time i ever had a problem centering an absolute element
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: -18px;
+}

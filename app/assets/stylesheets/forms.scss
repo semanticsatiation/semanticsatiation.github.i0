@@ -1,0 +1,193 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.foreground-form {
+    width: 100%;
+    max-width: 500px;
+
+    input[type="file"] {
+        width: 80%;
+        margin: 20px 0 10px 0;
+    }
+
+    .form-submit-button {
+        font-size: 20px;
+    }
+}
+
+.open-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: calc(100% - 71px);
+    margin: 0 auto;
+    width: 90%;
+
+    button {
+        height: 47px;
+    }
+
+    .foreground-form {
+        z-index: 0;
+        border: initial;
+    }
+}
+
+.large-app-logo {
+  width: 70px;
+  height: auto;
+}
+
+.signup-login-form {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+[class*='-form'] label {
+    margin-top: 5px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.input-field {
+    // i want input field to have smooth animations
+    // for the focus property but it doesn't since 
+    // i think input:-webkit-autofillis messing 
+    // around with the styles
+    height: 50px;
+    width: 100%;
+    margin: 5px 0;
+    padding: 0 30px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.password {
+    padding: 0 50px 0 30px;
+}
+
+.form-submit-button {
+    font-size: 18px;
+    margin-top: 5px;
+    padding: 10px;
+    height: 47px;
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.form-submit-button:active {
+    transition: initial;
+}
+
+.submit-error-emphasization:hover {
+    filter: initial;
+    cursor: initial;
+    box-shadow: none;
+}
+
+.password-field-container {
+    width: 100%;
+
+    > div {
+        position: relative;
+
+        button {
+            position: absolute;
+            top: 14px;
+            right: 10px;
+        }
+    }
+}
+
+.password-visibility-icon {
+    font-size: 30px;
+}
+
+// Different form layout
+.close-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 9998;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+
+    .foreground-form {
+        position: relative;
+        // relative so the exit icon can base its positon off 
+        // of the forms position
+
+        z-index: 9999;
+        width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.exit-icon-button {
+    position: absolute;
+    z-index: 9999;
+    top: 5px;
+    right: 5px;
+    font-size: 25px;
+}
+
+.exit-icon:hover {
+    filter: brightness(50%);
+}
+
+.information-button {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+
+// media queries
+@media all and (min-width: 500px) {
+    .foreground-form {
+        padding: 50px;
+    }
+
+    .open-form .foreground-form {
+        padding: initial;
+    }
+
+    .close-form .foreground-form {
+        padding: 50px;
+    }
+}

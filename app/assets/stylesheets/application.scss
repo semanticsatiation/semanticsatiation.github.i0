@@ -1,0 +1,164 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// debugColors:
+// border: 3px solid cyan;
+// border: 3px solid blueviolet;  
+// border: 3px solid pink;
+
+.page-filler-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    text-align: center;
+
+    span {
+        font-size: 100px;
+    }
+  }
+}
+
+[class*='refetch-button-container'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 66px);
+}
+
+.extra-refetch-button-container,
+.extra-load-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+}
+
+.extra-refetch-button-container {
+  height: 25px;
+
+  .page-filler-container {
+    p {
+      flex-direction: row;
+      font-size: 20px;
+
+      span {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+// moving .hidden down here to make sure it is considered the highest priority when we 
+// add it to classes in the DOM. Otherwise, leaving it at the top will
+// make other classes below it higher priority meaning 
+// things like display: flex, display: initial, etc... will make 
+// .hidden invalid
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smallest-spinner {
+  font-size: 15px;
+}
+
+.small-spinner {
+  font-size: 20px;
+}
+
+.medium-spinner {
+  font-size: 25px;
+}
+
+.large-spinner {
+  font-size: 80px;
+}
+
+.icon-spin {
+  -webkit-animation: icon-spin 2s infinite linear;
+          animation: icon-spin 2s infinite linear;
+}
+
+.border-pointer-right-outer,
+.border-pointer-left-outer {
+    position: absolute;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.border-pointer-left-inner,
+.border-pointer-right-inner {
+    position: absolute;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.border-pointer-left-outer {
+    bottom: 10px;
+    left: -10px;
+}
+
+.border-pointer-right-outer {
+    top: 93px;
+    right: -10px;
+}
+
+.border-pointer-left-inner {
+    top: -7px;
+    right: -11px;
+}
+
+.border-pointer-right-inner {
+    top: -7px;
+    right: 1px;
+}
+
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}

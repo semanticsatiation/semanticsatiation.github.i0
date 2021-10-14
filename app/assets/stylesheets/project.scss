@@ -1,0 +1,233 @@
+.increase-height {
+    height: calc(100% - 111px);
+}
+
+.decrease-height {
+    height: calc(100% - 71px);
+}
+
+.option-container {
+    overflow: scroll;
+    height: 100%;
+    padding: 0 5px 5px 5px;
+}
+
+.option-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.people-container > .option-header {
+    padding-bottom: 5px;
+}
+
+.people-container > .page-refetch-button-container,
+.people-container > .loading-container,
+.people-container > .page-filler-container  {
+    // different heights because sort-by-list
+    // disappears when we see any of elements
+    // and sort-by-list is 13px in height hence the 13px difference
+    // between .project-people-list and the ones above
+    height: calc(100% - 125px);
+}
+
+.search-user-container, 
+.add-person-container {
+    width: 100%;
+}
+
+.search-user-container {
+    .input-field {
+        padding: 0 40px 0 35px;
+    }
+}
+
+.add-person-container {
+    .input-field {
+        padding: 0 50px 0 20px;
+    }
+}
+
+.project-people-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(min-content, max-content);
+    // minmax is to prevent our grid items from stretching
+    // to fill missing content
+    gap: 5px;
+    overflow: scroll;
+    height: calc(100% - 83px);
+    padding: 5px 2px 0;
+}
+
+.project-people-list-item {
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.4s;
+
+    > div {
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 5px;
+
+        button {
+            height: 13px;
+            font-size: 25px;
+        }
+
+        button:hover {
+            filter: brightness(50%);
+        }
+    }
+
+    > span {
+        // I WANT THIS TO OVERFLOW CORRECTLY
+        width: 50%;
+        font-size: 15px;
+    }
+
+    .user-avatar-medium-container {
+        min-width: 75px;
+        cursor: initial;
+    }
+}
+
+.delete-user-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50px;
+    height: 100%;
+}
+
+.search-user-container {
+    position: relative;
+
+    .exit-icon-button {
+        z-index: 1;
+        top: 17px; 
+        right: 8px; 
+    }
+}
+
+.search-user-options {
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+}
+
+.add-person-container {
+    position: relative;
+
+    .bugger-search-container {
+        top: 55px;
+
+        > .page-filler-container,
+        .buggers-list {
+            height: calc(100% - 19px);
+        }
+    }
+
+    .add-person {
+        position: absolute;
+        z-index: 1;
+        top: 17px; 
+        right: 8px; 
+        font-size: 25px;
+    }
+
+    .add-person:hover {
+        filter: brightness(50%);
+    }
+}
+
+.project-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    input[type="submit"] {
+        min-width: 178px;
+    }
+
+    > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 47px;
+        max-width: 322px;
+    }
+
+    .foreground-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 300px;
+        padding: 0 20px;
+        z-index: 0;
+        border: initial;
+
+        h1 {
+            font-size: 29px;
+        }
+    }
+}
+
+
+
+@media all and (min-width: 440px) {
+    .project-people-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        // minmax is also here making sure all columns are of eqaul width
+        // when stretching to fill the screen
+        // without this, one column's width is always eaten up by others
+        // repeat(2, minmax(0, 1fr)) is equal to minmax(0, 1fr) minmax(0, 1fr)
+    }
+}
+
+@media all and (min-width: 548px) {
+    .people-container .option-header {
+        flex-direction: initial;
+        justify-content: center;
+    }
+
+    .search-user-container {
+        margin-right: 10px;
+    }
+
+    .search-user-container, 
+    .add-person-container {
+        max-width: 258px;
+    }
+
+    .people-container > .page-refetch-button-container,
+    .people-container > .loading-container,
+    .people-container > .page-filler-container {
+        height: calc(100% - 65px);
+    }
+
+    .project-people-list  {
+        height: calc(100% - 83px);
+    }
+}
+
+@media all and (min-width: 862px) {
+    .project-people-list {
+        // height: 75.8vh;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        // repeat(3, minmax(0, 1fr)) is equal to minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+        // minmax is also here making sure all columns are of eqaul width
+        // when stretching to fill the screen
+        // without this, one column's width is always eaten up by others
+    }
+}
