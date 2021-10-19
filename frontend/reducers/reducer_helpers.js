@@ -1,6 +1,7 @@
 export const sortObjects = (objectOne, objectTwo, sortBy) => {
     const objectNameOne = objectOne.name;
     const objectNameTwo = objectTwo.name;
+    
 
     if (sortBy === "name") {
         if (objectNameOne.toLowerCase() != objectNameTwo.toLowerCase()) {
