@@ -42,7 +42,10 @@ function notificationsReducer(state = defaultState, action) {
                 }
             } else {
                 return {
-                    pageNotifications: action.notifications,
+                    pageNotifications: {
+                        ...action.notifications,
+                        page: 1
+                    },
                     appNotifications: state.appNotifications
                 }
             }
@@ -50,10 +53,11 @@ function notificationsReducer(state = defaultState, action) {
             return {
                 pageNotifications: {
                     byId: {
-                        ...state.byId,
+                        ...state.pageNotifications.byId,
                         ...action.notifications.byId
                     },
-                    allIds: [state.allIds, action.notifications.allIds],
+                    allIds: [...state.pageNotifications.allIds, ...action.notifications.allIds],
+                    totalNotifications: action.notifications.totalNotifications,
                     page: state.pageNotifications.page + 1
                 },
                 appNotifications: state.appNotifications

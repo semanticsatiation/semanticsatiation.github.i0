@@ -19,7 +19,7 @@ import {
     RECEIVE_BUG_ACTIVITIES, RECEIVE_CURRENT_BUG, RECEIVE_EXTRA_BUG_COMMENTS, 
     RECEIVE_EXTRA_NESTED_BUG_COMMENTS, REMOVE_CURRENT_BUG 
 } from "../actions/current_bug_actions";
-import { RECEIVE_NOTIFICATIONS } from "../actions/notification_actions";
+import { RECEIVE_EXTRA_NOTIFICATIONS, RECEIVE_NOTIFICATIONS } from "../actions/notification_actions";
 
 const defaultState = {
     currentProjectBeingFetched: false,
@@ -118,6 +118,7 @@ function fetchingReducer(state = defaultState, action) {
         case RECEIVE_EXTRA_YEARS:
         case RECEIVE_EXTRA_PEOPLE:
         case RECEIVE_EXTRA_BUGS:
+        case RECEIVE_EXTRA_NOTIFICATIONS:
             return Object.assign({}, state, { extraObjectsBeingFetched: false });
         case RECEIVE_MONTH_PAGE:
             return Object.assign({}, state, { extraLayerObjectsBeingFetched: false });

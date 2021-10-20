@@ -11,22 +11,18 @@ import RefetchButton from '../../shared/refetch_button';
 
 let extraNotificationsBeingFetched = false;
 let allItemsFetched = false;
+let page = 0;
 
 function Notifications(props) {
 
     extraNotificationsBeingFetched = props.extraNotificationsBeingFetched;
     allItemsFetched = props.totalSessionNotifications >= props.totalNotifications;
+    page = props.page;
 
     const notificationListRef = useRef();
 
     useEffect(() => {
-        fetchNotifications().then(
-            () => {
-                if (notificationListRef.current && !allItemsFetched) {
-                    addScroll();
-                }
-            }
-        );
+        fetchNotifications();
 
         return () => {
             endAllRequests();
@@ -70,7 +66,7 @@ function Notifications(props) {
 
     const fetchExtraNotifications = () => (
         props.fetchExtraNotifications({
-            url: `/notifications?off_set=${props.page}`
+            url: `/notifications?off_set=${page}`
         }).then(
             () => {
                 if (notificationListRef.current && allItemsFetched) {
@@ -93,9 +89,7 @@ function Notifications(props) {
     }
 
     return (
-        // DOES INFINTE LOAD WORK FOR THIS???
-        // I NEVER TESTED THIS DID I???
-        <div className="notification-container option-container notification-container">{
+        <div className="notification-container option-container notification-container" ref={notificationListRef}>{
             props.notificationsFetchFailed ? (
                 <RefetchButton refetchAction={fetchNotifications} />
             ) : (
