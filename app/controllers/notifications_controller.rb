@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
     def index
-        @notifications = current_user.notifications.order(created_at: :desc)
+        @all_notifications = current_user.notifications
+        @notifications = @all_notifications.limit(20).offset(20 * off_set).order(created_at: :desc)
 
         render :index
     end

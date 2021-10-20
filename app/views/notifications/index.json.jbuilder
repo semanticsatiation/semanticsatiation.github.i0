@@ -11,4 +11,4 @@ end
 
 json.allIds @notifications.map(&:id)
 
-json.totalNotifications @notifications.count
+json.totalNotifications @all_notifications.count

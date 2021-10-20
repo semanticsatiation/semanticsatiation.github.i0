@@ -35,6 +35,7 @@ export const fetchNotifications = (formOpt) => (dispatch) => {
         (errors) => {
             if (!errors.aborted || errors.timedOut) {
                 dispatch(failObjectsFetch());
+                return errors;
             }
         }
     )
@@ -44,7 +45,7 @@ export const fetchExtraNotifications = (formOpt) => (dispatch) => {
     dispatch(startFetchingExtraObjects());
     return SharedUtil.filterObjects(formOpt).then(
         (successfulNotifications) => {
-            receiveExtraNotifications(successfulNotifications);
+            dispatch(receiveExtraNotifications(successfulNotifications));
         },
         (errors) => {
             if (!errors.aborted || errors.timedOut) {
@@ -58,8 +59,8 @@ export const fetchExtraNotifications = (formOpt) => (dispatch) => {
 
 export const fetchAppNotifications = (formOpt) => (dispatch) => {
     return SharedUtil.filterObjects(formOpt).then(
-        (filteredProjects) => {
-            dispatch(receiveNotifications(filteredProjects, "app"));
+        (appNotifications) => {
+            dispatch(receiveNotifications(appNotifications, "app"));
         },
         (errors) => console.log(errors)
     )
