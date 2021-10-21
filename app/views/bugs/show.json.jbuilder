@@ -20,7 +20,7 @@ json.buggers do
         @bug.buggers.with_attached_photo.each do |bugger|
             json.set! bugger.id do
                 json.extract! bugger, :id, :username
-                json.photoURL bugger.photo.attached? ? (url_for(bugger.photo)) : ("https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png")
+                json.photoURL bugger.photo.attached? ? (url_for(bugger.photo)) : ("https://bug-off-public.s3.us-east-2.amazonaws.com/default_profile_picture.svg")
             end
         end
     end

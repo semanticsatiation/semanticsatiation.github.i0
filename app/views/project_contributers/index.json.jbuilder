@@ -17,7 +17,7 @@ else
 
                 json.projectContributerId worker.project_contributer_id
                 # email soon
-                json.photoURL worker.photo.attached? ? (url_for(worker.photo)) : ("https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png")
+                json.photoURL worker.photo.attached? ? (url_for(worker.photo)) : ("https://bug-off-public.s3.us-east-2.amazonaws.com/default_profile_picture.svg")
             end
         end
     end

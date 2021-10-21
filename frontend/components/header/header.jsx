@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import PFPIcon from "../../../src/default-profile-picture.png";
 
 
 // components
@@ -200,7 +199,7 @@ class Header extends React.Component {
                     <ul className="header-nav-list">
                         <li>
                             <Link to="/projects">
-                                <img className="small-app-logo" src={window.logo} alt="BugOff Logo" />
+                                <img className="small-app-logo" src={"https://bug-off-public.s3.us-east-2.amazonaws.com/bug_off_logo.svg"} alt="BugOff Logo" />
                             </Link>
                             {
                                 this.props.organizationsFetchFailed ? (null) : (
@@ -259,7 +258,7 @@ class Header extends React.Component {
                         </li>
                         <li className="avatar-drop-down" onClick={this.toggleAvatarDropDown}>
                             <div className="user-avatar-small-container">
-                                <img ref={this.avatarRef} srcSet={photoURL === "https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png" ? (PFPIcon) : (photoURL)} />
+                                <img ref={this.avatarRef} srcSet={photoURL} />
                             </div>
                             <DropDownMenu
                                 dropDownRef = {this.dropDownContainerRef}

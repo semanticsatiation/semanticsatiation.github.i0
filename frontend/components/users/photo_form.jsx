@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import PFPIcon from '../../../src/default-profile-picture.png';
 
 // icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +11,7 @@ import ErrorListItem from "../shared/error_list_item";
 
 function PhotoForm(props) {
     const [photoFields, setPhotoFields] = useState({
-        currentPhoto: props.currentUser.photoURL === "https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png" ? (PFPIcon) : (props.currentUser.photoURL),
+        currentPhoto: props.currentUser.photoURL,
         photo: undefined,
         photoPreview: undefined,
     });

@@ -60,7 +60,7 @@ function SessionForm(props) {
 
     return(
         <div className="form-container">
-            <img className="large-app-logo" src={window.logo} alt="BugOff Logo" />
+            <img className="large-app-logo" src={"https://bug-off-public.s3.us-east-2.amazonaws.com/bug_off_logo.svg"} alt="BugOff Logo" />
             <form className="signup-login-form" onSubmit={submitForm}>
                 <ErrorListItem errors={props.errors.session_form} />
                 <fieldset>

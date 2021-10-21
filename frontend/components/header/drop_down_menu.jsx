@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import PFPIcon from '../../../src/default-profile-picture.png';
 
 // components
 import ThemeDropDown from "./theme_drop_down";
@@ -18,7 +17,7 @@ function DropDownMenu(props) {
                 <li className="drop-down-list-item">
                     <Link to="/profile">
                         <div className="user-avatar-medium-container">
-                            <img srcSet={photoURL === "https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png" ? (PFPIcon) : (photoURL)} />
+                            <img srcSet={photoURL} />
                         </div>
                         <span className="user-profile">
                             {/* need to make sure to truncate the username if it's too long? should i overflow: scroll? */}

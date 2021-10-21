@@ -5,7 +5,6 @@ import PhotoFormContainer from "./photo_form_container";
 import FormSectionsContainer from "./form_sections_container";
 import UserProfileField from "./user_profile_field";
 import DeleteForm from "../shared/delete_form";
-import PFPIcon from '../../../src/default-profile-picture.png'
 
 // icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -53,7 +52,7 @@ function UserProfile(props) {
                 <li className="edit-photo-link" onClick={e => setToggleSpecificForm("photo")}>
                     <button>
                         <div className="user-avatar-large-container">
-                            <img srcSet={photoURL === "https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png" ? (PFPIcon) : (photoURL)} />
+                            <img srcSet={photoURL} />
                         </div>
                         <div className="edit-avatar">
                             <FontAwesomeIcon icon="camera-retro" />
