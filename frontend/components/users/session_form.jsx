@@ -66,7 +66,7 @@ function SessionForm(props) {
                 <fieldset>
                     <h1 className="form-title">{title}</h1>
                     <label htmlFor="username">
-                        Username
+                        Username (case insensitive)
                         <ErrorListItem errors={props.errors.username} />
                     </label>
                     <input

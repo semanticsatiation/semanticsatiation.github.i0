@@ -8,7 +8,7 @@ function UsernameField({username, logChange, errors}) {
     return (
         <>
             <label htmlFor="username">
-                Username
+                Username (case insensitive)
                 <ErrorListItem errors={errors} />
             </label>
             <input
