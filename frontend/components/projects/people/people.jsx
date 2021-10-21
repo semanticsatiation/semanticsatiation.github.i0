@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDebounce } from 'use-debounce';
-import PFPIcon from "../../../../src/default-profile-picture.png";
 
 
 // util
@@ -499,7 +498,7 @@ function People(props) {
                                                 <li className="project-people-list-item" key={person.id}>
                                                     <div>
                                                         <div className="user-avatar-medium-container">
-                                                            <img srcSet={person.photoURL === "https://bug-off-dev.s3.us-east-2.amazonaws.com/default-profile-picture.png" ? (PFPIcon) : (person.photoURL)} />
+                                                            <img srcSet={person.photoURL} />
                                                         </div>
                                                         {determineWorkerInfo(person)}
                                                     </div>
