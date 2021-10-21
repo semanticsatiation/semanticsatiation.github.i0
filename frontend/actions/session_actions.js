@@ -88,6 +88,8 @@ export const logOut = () => (dispatch) => {
                 dispatch(logOutCurrentUser());
             }
 
+            console.log("User has failed to log out!");
+
             dispatch(failLogOutCurrentUser());
         }
     );
