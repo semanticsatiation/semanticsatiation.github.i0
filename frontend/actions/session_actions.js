@@ -83,9 +83,12 @@ export const logOut = () => (dispatch) => {
     
     logOutWithTimeout().then(
         () => dispatch(logOutCurrentUser()),
-        () => {
+        (error) => {
+            if (error.hasOwnProperty("app") && error.app.includes("You must be signed in!")) {
+                dispatch(logOutCurrentUser());
+            }
+
             dispatch(failLogOutCurrentUser());
-            console.log("User has failed to log out!");
         }
     );
 };
