@@ -7,7 +7,7 @@
 }
 
 .option-container {
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
     padding: 0 5px 5px 5px;
 }
@@ -56,7 +56,7 @@
     // minmax is to prevent our grid items from stretching
     // to fill missing content
     gap: 5px;
-    overflow: scroll;
+    overflow: auto;
     height: calc(100% - 83px);
     padding: 5px 2px 0;
 }

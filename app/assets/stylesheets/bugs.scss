@@ -126,7 +126,7 @@
 }
 
 .scrollable-table {
-    overflow: scroll;
+    overflow: auto;
 }
 
 .bugs-table { 
@@ -170,7 +170,7 @@
     padding: 5px;
 
     td div {
-        overflow: scroll;
+        overflow: auto;
         max-height: 100px;
     }
 }
@@ -195,7 +195,7 @@
 .bug-form {
     height: 100%;
     width: 100%;
-    overflow: scroll;
+    overflow: auto;
     
     .exit-icon-button {
         z-index: 1;
@@ -291,7 +291,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-        overflow: scroll;
+        overflow: auto;
         padding: 5px;
         gap: 10px;
 
@@ -375,7 +375,7 @@
         display: flex;
         flex-direction: column;
         height: calc(100% - 60px);
-        overflow: scroll;
+        overflow: auto;
     }
 
     .buggers-list-item {
@@ -422,7 +422,7 @@
 }
 
 .bug-properties {
-    overflow: scroll;
+    overflow: auto;
     
     div:not(.user-avatar-small-container, .bug-parents-comments-container) {
         padding: 2px;
@@ -473,7 +473,7 @@
     .buggers-list {
         display: flex;
         flex-wrap: wrap;
-        overflow: scroll;
+        overflow: auto;
         height: 50px;
         gap: 10px;
     }
@@ -675,7 +675,7 @@
 }
 
 .bug-parents-comments-container {
-    overflow: scroll;
+    overflow: auto;
     height: 500px;
 }
 
@@ -900,7 +900,7 @@
 
         span {
             float: initial;
-            overflow: scroll;
+            overflow: auto;
             max-height: 200px;
         }
     }
