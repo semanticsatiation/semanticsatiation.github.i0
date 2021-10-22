@@ -201,7 +201,7 @@
 .projects-list,
 .organizations-list {
   max-height: 225px;
-  overflow: scroll;
+  overflow: auto;
 
 
   .loading-container {
@@ -336,7 +336,7 @@
 .drop-down-list-item:first-of-type > a {
   display: flex;
   padding: 7px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .drop-down-list-item > a,
