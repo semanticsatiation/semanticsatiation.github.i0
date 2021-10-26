@@ -253,6 +253,7 @@ class HomePage extends React.Component {
     }
 
     render() {
+        // FIX HOW THINGS CUT OFF TOWARDS THE BOTTOM
         const noContributedProjects = this.props.currentOrganization.name === CONTRIBUTED_PROJECTS && this.props.allIds.length <= 0;
 
         const pageFiller = ![undefined, ""].includes(this.props.projectsFilter) ? (<PageFiller string="No projects were found!" icon="file-excel" />) : (<PageFiller string="Any project you contribute to goes here!" icon="hand-holding-medical" />);
