@@ -89,7 +89,7 @@ function Notifications(props) {
     }
 
     return (
-        <div className="notification-container option-container notification-container" ref={notificationListRef}>{
+        <div className="notification-container">{
             props.notificationsFetchFailed ? (
                 <RefetchButton refetchAction={fetchNotifications} />
             ) : (
@@ -97,7 +97,7 @@ function Notifications(props) {
                     <Loading size="large-spinner" />
                 ) : (
                     props.notificationsAllIds.length > 0 ? (
-                        <ul className="notification-list">{
+                        <ul className="notification-list" ref={notificationListRef}>{
                             props.notificationsAllIds.map((notifId) => {
                                 const notif = props.getNotification(notifId);
 

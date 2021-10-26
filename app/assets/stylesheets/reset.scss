@@ -17,6 +17,19 @@ button {
   background: transparent;
 }
 
+.bug-container, .bug-properties, .bugs-table-container, .scrollable-table, 
+ul:not(.header-nav-list, .recent-projects, .drop-down-list, .project-option-list) {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.bug-container::-webkit-scrollbar, .bug-properties::-webkit-scrollbar,
+.bugs-table-container::-webkit-scrollbar, .scrollable-table::-webkit-scrollbar, 
+ul:not(.header-nav-list, .recent-projects, .drop-down-list, .project-option-list)::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
 hr {
   height: 2px;
   border: none;

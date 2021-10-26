@@ -5,18 +5,19 @@
 }
 
 .notification-container {
-    max-height: calc(100% - 71px); 
+    height: calc(100% - 76px);
 }
 
 .notification-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: auto;
     gap: 15px;
     margin-top: 5px;
     text-align: center;
+    padding: 10px;
+    height: 100%;
 
     > li {
         display: flex;

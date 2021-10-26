@@ -299,7 +299,7 @@ function Bug(props) {
     )
 
     return (
-        <div className="option-container bug-container">
+        <div className="bug-container">
             {
                 showDeleteForm ? (
                     <DeleteForm
@@ -570,8 +570,8 @@ function Bug(props) {
                                                 </div>
                                                 {
                                                     props.allBugCommentsIds.length > 0 ? (
-                                                        <div className="bug-parents-comments-container" ref={commentsListRef}>
-                                                            <ul className="bug-parents-comments-list">{
+                                                        <div className="bug-parents-comments-container" >
+                                                            <ul className="bug-parents-comments-list" ref={commentsListRef}>{
                                                                 props.allBugCommentsIds.map((parentId) => {
                                                                     const parentComment = props.byCommentsId[parentId];
                                                                     const parentUsername = parentComment.submitter.username;

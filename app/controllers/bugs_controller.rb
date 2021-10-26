@@ -54,7 +54,7 @@ class BugsController < ApplicationController
 
         @all_bugs_count = @bugs.size
 
-        @bugs = @bugs.limit(25).offset(25 * off_set)
+        @bugs = @bugs.limit(32).offset(32 * off_set)
 
         render :index
     end
