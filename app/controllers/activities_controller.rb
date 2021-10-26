@@ -26,7 +26,7 @@ class ActivitiesController < ApplicationController
 
                 all_years_length = sort_by_year_and_month.count
 
-                selected_keys = sort_by_year_and_month.keys.sort.reverse[(off_set * 10)..((off_set * 10) + 9)]
+                selected_keys = sort_by_year_and_month.keys.sort.reverse[(off_set * 15)..((off_set * 15) + 14)]
 
                 sort_by_year_and_month = sort_by_year_and_month.select{|key| selected_keys.include?(key)}
 

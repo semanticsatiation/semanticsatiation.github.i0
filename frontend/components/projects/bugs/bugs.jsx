@@ -97,6 +97,12 @@ function Bugs(props) {
     }, [sortState, filterValue, searchBybuggers])
 
     useEffect(() => {
+        if ((!state.showForm) && (tableRef.current && !allItemsFetched)) {
+            addScroll();
+        }
+    }, [state.showForm])
+
+    useEffect(() => {
         if (filterContainerRef.current && currentState.showFilter) {
             document.addEventListener("click", listenForOffClick, { once: true });
         }
@@ -260,7 +266,7 @@ function Bugs(props) {
     }
 
     return (
-        <div className="option-container bugs-table-container">{
+        <div className="bugs-table-container">{
             state.showForm ? (<BugFormContainer closeForm={() => setState({...state, showForm: false})}/>) : (
                 <>
                     <header className="option-header">

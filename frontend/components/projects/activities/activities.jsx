@@ -130,7 +130,7 @@ function Activities(props) {
     }
 
     return (
-        <div className="option-container activities-container" ref={activitiesListRef}>{
+        <div className="activities-container">{
             props.activitiesFetchFailed ? (
                 <RefetchButton refetchAction={fetchYears} />
             ) : (
@@ -139,7 +139,7 @@ function Activities(props) {
                 ) : (
                     Object.keys(hideMonthsYears).length > 0 ? (
                         <>
-                            <ul className="project-activities-list">{
+                            <ul className="project-activities-list" ref={activitiesListRef}>{
                                 props.allIds.map((year) => {
                                     const yearObject = props.byId[year];
                                     const yearHiddenObject = hideMonthsYears[year];

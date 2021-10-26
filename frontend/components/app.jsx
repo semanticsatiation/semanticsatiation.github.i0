@@ -67,12 +67,12 @@ import Loading from "./shared/loading";
 function App(props) {
     // Adding theme steps: add to here, theme.jsx, and theme_drop_down.jsx, and the User model in ensure_valid_theme
     const stringToTheme = {
-        "Default": defaultTheme,
-        "Creamy": creamy,
-        "Dark": darkTheme,
-        "Blueberry": blueberryTheme,
-        "FireFly": fireFlyTheme,
-        "Halloween": halloweenTheme
+        "Default": [defaultTheme, '#002b36'],
+        "Creamy": [creamy, '#19181a'],
+        "Dark": [darkTheme, '#0d171d'],
+        "Blueberry": [blueberryTheme, '#011B44'],
+        "FireFly": [fireFlyTheme, '#191919'],
+        "Halloween": [halloweenTheme, '#1f0333']
     }
 
     const NotFoundRedirect = () => (
@@ -80,10 +80,11 @@ function App(props) {
     );
 
     return (
-        <ThemeProvider theme={stringToTheme[props.theme]}>
+        <ThemeProvider theme={stringToTheme[props.theme][0]}>
             <>
                 <GlobalStyles />
-                <div className="app">
+                {/* style is here to prevent the white flash when refreching the page */}
+                <div className="app" style={{ backgroundColor: stringToTheme[props.theme][1] }}>
                     {
                         props.loggingOut ? (
                             <Loading size="large-spinner" />

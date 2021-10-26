@@ -18,6 +18,12 @@
     height: calc(100% - 120px);
 }
 
+.bugs-table-container {
+    height: 100%;
+    overflow: auto;
+    padding: 5px;
+}
+
 .bugs-table-container .option-header {
     width: 100%;
     max-width: 550px;
@@ -195,8 +201,7 @@
 .bug-form {
     height: 100%;
     width: 100%;
-    overflow: auto;
-    
+
     .exit-icon-button {
         z-index: 1;
         top: 5px;
@@ -674,7 +679,8 @@
     resize: vertical;
 }
 
-.bug-parents-comments-container {
+
+.bug-parents-comments-list {
     overflow: auto;
     height: 500px;
 }
@@ -683,7 +689,6 @@
 .bug-children-comments-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: 10px;
 }
@@ -839,7 +844,6 @@
     .bug-container {
         display: flex;
         align-items: center;
-        height: initial;
     }
 
     .bug-properties {
