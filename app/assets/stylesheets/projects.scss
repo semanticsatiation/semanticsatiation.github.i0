@@ -107,6 +107,9 @@
 }
 
 .project-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 0;
     // i need cursor: pointer because of the weird things happening
