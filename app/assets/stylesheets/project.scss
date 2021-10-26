@@ -71,6 +71,9 @@
     border-radius: 5px;
     overflow: hidden;
     transition: 0.4s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     > div {
         display: flex;
@@ -89,8 +92,6 @@
     }
 
     > span {
-        // I WANT THIS TO OVERFLOW CORRECTLY
-        width: 50%;
         font-size: 15px;
     }
 

@@ -71,6 +71,7 @@ class User < ApplicationRecord
   validates :username, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :username, length: { :minimum => 5, :maximum => 25 }
+  validates :username, uniqueness: { case_sensitive: false }
   
   # put between in a method???
   validates_format_of :username, with: /\A\w*\z/, message: "no special characters except underscores (_)"
@@ -92,8 +93,6 @@ class User < ApplicationRecord
 
   before_validation :ensure_valid_theme
 
-  before_validation :downcase_username
-
   after_create :create_default_organizations
 
   attr_reader :password
@@ -107,7 +106,7 @@ class User < ApplicationRecord
   end
 
   def self.find_by_credentials(username, password)
-    user = User.find_by(username: username.downcase)
+    user = User.find_by("LOWER(username)= ?", username.downcase)
     user if user && user.is_password?(password)
   end
 
@@ -218,10 +217,6 @@ private
         end
       end
     end
-  end
-
-  def downcase_username
-    self.username.downcase!
   end
 
   def ensure_valid_theme
