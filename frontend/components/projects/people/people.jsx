@@ -379,7 +379,7 @@ function People(props) {
     }
 
     return (
-        <div className="option-container people-container">
+        <div className="people-container">
             <header className="option-header">
                 <div className="search-user-container">
                     <ul className="search-user-options">
