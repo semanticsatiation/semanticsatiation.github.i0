@@ -39,6 +39,12 @@
     border-radius: 10px;
 }
 
+.project-activities-list-item-activity {
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .project-activities-list-item-months {
     display: flex;
     justify-content: center;

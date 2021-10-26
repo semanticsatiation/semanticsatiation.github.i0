@@ -174,6 +174,7 @@
     text-align: center;
     overflow: hidden;
 
+
     div,
     a {
         display: flex;
@@ -181,6 +182,12 @@
         justify-content: center;
         width: 100%;
         padding: 10px;
+    }
+
+    h1, p {
+        white-space: wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -204,8 +211,6 @@
     transition: 0.4s;
     height: 100%;
     width: 30%;
-    overflow: hidden;
-    white-space: nowrap;
     border-radius: 20px;
 
     button {
@@ -213,6 +218,9 @@
         padding: 8px;
         text-align: center;
         font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

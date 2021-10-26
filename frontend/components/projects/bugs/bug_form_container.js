@@ -33,6 +33,11 @@ const mapStateToProps = (state, ownProps) => {
     if (ownProps.isUpdate) {
         const {photos, close_date, created_at, updated_at, submitter, buggers, ...filterBugProperties} = ownProps.bugProperties;
         defaultBugProperties = Object.assign({}, defaultBugProperties, filterBugProperties);
+
+        // Dates on fireFox have to be formatted differently hence the following piece of code (it crashes if not formatted corrected)
+        Object.assign(defaultBugProperties, {
+            dead_line: window.navigator.userAgent.indexOf('Firefox') !== -1 ? (defaultBugProperties.dead_line.replace(/-/g, '/')) : (defaultBugProperties.dead_line)
+        });
     }
     
     return {
