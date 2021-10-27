@@ -64,8 +64,7 @@ class Bug < ApplicationRecord
   validate :valid_status
   validate :valid_priority
   validate :dates_cannot_be_in_the_past
-  validate :limit_attachments_to_three
-  validate :limit_photos
+  # validate :limit_photos
 
   after_validation :set_close_date
 
@@ -148,18 +147,12 @@ private
     end
   end
 
-  def limit_attachments_to_three
-    unless self.photos.length <= 3
-      self.errors.add(:attachments, "are limited to no more than 3")
-    end
-  end
+  # I don't know how to limit the amount of photos a bug can have since rails 
+  # always saves the photos first before validating the Bug object...
 
-  def limit_photos
-    # i guess i could keep this here but it won't do much since
-    # photos are saved when attached to a bug instantaneously
-    # so the validation won't work right away...
-    if self.photos.length > 3
-      self.errors.add(:photos, 'limited to 3')
-    end
-  end
+  # def limit_photos
+  #   unless Bug.find(self.id).photos.length <= 3
+  #     self.errors.add(:photos, 'limited to 3')
+  #   end
+  # end
 end
