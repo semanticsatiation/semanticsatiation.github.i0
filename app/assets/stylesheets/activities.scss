@@ -40,9 +40,7 @@
 }
 
 .project-activities-list-item-activity {
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .project-activities-list-item-months {

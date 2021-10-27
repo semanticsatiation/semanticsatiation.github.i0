@@ -173,11 +173,16 @@ function Activities(props) {
                                                                         ) : (
                                                                             <ul className={`project-activities-list-item-activities ${isMonthHidden ? ("hidden") : ("")}`}>
                                                                                 {
-                                                                                    monthObject.allIds.map((activityId) => (
-                                                                                        <li className="project-activities-list-item-activity" key={activityId}>{
-                                                                                            monthObject[activityId].activity
-                                                                                        }</li>
-                                                                                    ))
+                                                                                    monthObject.allIds.map((activityId) => {
+                                                                                        const activity = monthObject[activityId].activity;
+                                                                                        return (
+                                                                                            <li className="project-activities-list-item-activity" key={activityId}>{
+                                                                                                activity.length > 125 ? (
+                                                                                                    `${activity.substring(0, 125).trim()}...`
+                                                                                                ) : (activity)
+                                                                                            }</li>
+                                                                                        )
+                                                                                    })
                                                                                 }
                                                                             </ul>
                                                                         )
