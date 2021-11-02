@@ -8,6 +8,9 @@ Bug Off is an application that helps record,
 report, assign and track the bugs
 in your personal projects!
 
+## Demo
+https://bugoff.herokuapp.com/#/login
+
 ## Features
 
 - Responsive web design
@@ -17,7 +20,6 @@ in your personal projects!
 - Select from 6 unique app themes
 
 <img alt="App Themes Gif" src="https://user-images.githubusercontent.com/74139058/139150252-d7c154d9-c87c-4f9e-ad8c-6857ebeac8d5.gif" width="700" />
-
 
   
 ## Tech Stack
