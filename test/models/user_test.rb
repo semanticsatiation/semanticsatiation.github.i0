@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  biography       :text             default(""), not null
+#  guest           :boolean          default(FALSE)
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  theme           :string           default("Default"), not null

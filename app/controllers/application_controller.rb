@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery unless: -> { request.format.json? }
     before_action :must_be_signed_in!
 
     # this catches all RecordNotFound errors and rescues it with
