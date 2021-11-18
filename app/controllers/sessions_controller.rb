@@ -18,8 +18,17 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        id = current_user.id
+
         if logged_in?
             log_out!
+
+            logged_out_user = User.find(id)
+
+            if logged_out_user.guest
+                logged_out_user.destroy
+            end
+            
             render json: {} 
         else
             render json: {}, status: 404

@@ -41,10 +41,6 @@ private
     def log_out!
         current_user.reset_session_token!
         session[:session_token] = nil
-
-        if current_user.guest
-            current_user.destroy
-        end
     end
 
     def logged_in?
