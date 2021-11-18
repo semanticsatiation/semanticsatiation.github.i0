@@ -17,7 +17,7 @@ function SessionForm(props) {
         password: "",
     })
 
-    const isSignUp = props.type === "Sign Up"
+    const isSignUp = props.type === "Sign Up";
 
     const [value] = useDebounce(state, 650);
 
@@ -31,11 +31,11 @@ function SessionForm(props) {
         }
     }, [value])
 
-    const submitForm = (event) => {
+    const submitForm = (event, guest) => {
         event.preventDefault();
         
         props.submit({ 
-            body: { [isSignUp ? ("user") : ("session")]: state },
+            body: { [isSignUp ? ("user") : ("session")]: {...state, guest: guest} },
             url: isSignUp ? ("/users") : ("/session")
         });
     }
@@ -86,7 +86,18 @@ function SessionForm(props) {
                     />
 
                     {/* disable this until all fields are valid! */}
-                    <SubmitButtonContainer submitValue={props.type} exposeSubmit={!isSignUp} anyEmptyFields={anyEmptyFields(state.username, state.password)} />
+                    {
+                        props.type == "Log In" ? (
+                            <div className="login-div">
+                                <div onClick={e => submitForm(e, false)}>
+                                    <SubmitButtonContainer submitValue={props.type} exposeSubmit={!isSignUp} anyEmptyFields={anyEmptyFields(state.username, state.password)} />
+                                </div>
+                                <div onClick={e => submitForm(e, true)}>
+                                    <SubmitButtonContainer submitValue={"Guest"} exposeSubmit={!isSignUp} anyEmptyFields={anyEmptyFields(state.username, state.password)} />
+                                </div>
+                            </div>
+                        ) : (<SubmitButtonContainer submitValue={props.type} exposeSubmit={!isSignUp} anyEmptyFields={anyEmptyFields(state.username, state.password)} />)
+                    }
                 </fieldset>
             </form>
             {sessionLink}

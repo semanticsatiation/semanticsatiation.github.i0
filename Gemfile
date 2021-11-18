@@ -46,6 +46,8 @@ gem 'bootsnap', require: false
 
 # gem 'webpacker', '~> 5.x'
 
+gem 'passgen'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

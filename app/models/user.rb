@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  biography       :text             default(""), not null
+#  guest           :boolean          default(FALSE)
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  theme           :string           default("Default"), not null
@@ -72,6 +73,7 @@ class User < ApplicationRecord
   validates :username, :session_token, uniqueness: true
   validates :username, length: { :minimum => 5, :maximum => 25 }
   validates :username, uniqueness: { case_sensitive: false }
+  validate :restrict_username_for_guests 
   
   # put between in a method???
   validates_format_of :username, with: /\A\w*\z/, message: "no special characters except underscores (_)"
@@ -216,6 +218,12 @@ private
           self.errors.add(:password, PASSWORD_REQUIREMENTS[ind])
         end
       end
+    end
+  end
+
+  def restrict_username_for_guests
+    if self.username =~ /bug_off_guest/i && !self.guest
+      self.errors.add(:username, "is not available")
     end
   end
 

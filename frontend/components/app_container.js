@@ -5,6 +5,12 @@ import { connect } from "react-redux";
 import { fetchOrganizations } from "../actions/organization_actions";
 
 // maybe pass currentUser to All components so we don't have to keep requiring it???
+
+
+// run the following commands in terminal to watch all changes
+// npm run webpack
+// npm run webdev
+
 const mapStateToProps = (state, ownProps) => ({
     theme: state.session.theme,
     organizationsBeingFetched: state.entities.organizations.allIds.length <= 0,

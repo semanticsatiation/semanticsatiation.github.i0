@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery unless: -> { request.format.json? }
     before_action :must_be_signed_in!
 
     # this catches all RecordNotFound errors and rescues it with
@@ -40,6 +41,10 @@ private
     def log_out!
         current_user.reset_session_token!
         session[:session_token] = nil
+
+        if current_user.guest
+            current_user.destroy
+        end
     end
 
     def logged_in?
