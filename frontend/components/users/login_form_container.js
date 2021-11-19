@@ -7,7 +7,8 @@ import { login } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => ({
     errors: state.errors.formErrors,
-    type: "Log In"
+    type: "Log In",
+    isSubmitting: state.ui.submit.isSubmitting,
 });
 
 const mapDispatchToProps = (dispatch) => ({

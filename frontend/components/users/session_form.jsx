@@ -33,11 +33,13 @@ function SessionForm(props) {
 
     const submitForm = (event, guest) => {
         event.preventDefault();
-        
-        props.submit({ 
-            body: { [isSignUp ? ("user") : ("session")]: {...state, guest: guest} },
-            url: isSignUp ? ("/users") : ("/session")
-        });
+
+        if (!props.isSubmitting) {
+            props.submit({
+                body: { [isSignUp ? ("user") : ("session")]: { ...state, guest: guest } },
+                url: isSignUp ? ("/users") : ("/session")
+            });
+        }
     }
 
     const logChange = (event) => {

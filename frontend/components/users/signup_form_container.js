@@ -7,7 +7,7 @@ import { signup } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => ({
     errors: state.errors.formErrors,
-    type: "Sign Up"
+    type: "Sign Up",
 });
 
 const mapDispatchToProps = (dispatch) => ({
