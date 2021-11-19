@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
     skip_before_action :must_be_signed_in!, only: [:create]
+    before_action only: [:update, :destroy] do
+        must_not_be_guest!(params[:id])
+    end
     before_action :must_be_profile_owner!, except: [:index, :create]
     before_action :set_project, only: [:index]
 
@@ -104,6 +107,14 @@ class UsersController < ApplicationController
 private
     def user_params
         params.require(:user).permit(:username, :password, :photo, :biography, :theme)
+    end
+
+    def must_not_be_guest!(id)
+        to_be_updated = params[:user].keys.first
+
+        if User.find(id).guest && !["photo", "theme", "biography"].include?(to_be_updated)
+            render json: {"#{to_be_updated}": ["can not be changed as a guest"]}, status: 422
+        end
     end
 
     def must_be_profile_owner!
