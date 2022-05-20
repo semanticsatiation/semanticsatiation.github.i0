@@ -11,7 +11,6 @@ import { fetchOrganizations } from "../../actions/organization_actions";
 
 // selectors
 import { getCurrentOrganization } from "../../reducers/selectors";
-import project_form from "../projects/project_form";
 
 const mapStateToProps = (state, ownProps) => {
     const entities = state.entities;
@@ -25,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
         organizationsFetchFailed: fetching.organizationsFetchFailed,
         appNotifications: entities.notifications.appNotifications.byId,
         unreadAppNotificationsCount: entities.notifications.appNotifications.unreadAppNotificationsCount,
-        loggingOut: fetching.loggingOut
+        loggingOut: fetching.loggingOut,
     }
 };
 

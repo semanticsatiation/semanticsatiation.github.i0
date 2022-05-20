@@ -27,7 +27,8 @@ class Header extends React.Component {
             hideThemeMenu: true,
             hideInlineHeader: false,
             showProjectForm: false,
-            showOrganizationForm: false
+            showOrganizationForm: false,
+            currentInt: undefined
         }
         
         this.dropDownContainerRef = React.createRef();
@@ -48,6 +49,82 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.props.fetchOrganizations();
+
+        let currentGetRequest = new AbortController();
+        let currentGetSignal = currentGetRequest.signal;
+
+        this.setState({
+            currentInt: setInterval(() => {
+                const getWithTimeout = async () => {
+                    currentGetRequest.abort();
+                
+                    currentGetRequest = new AbortController();
+                    currentGetSignal = currentGetRequest.signal;
+                
+                    let aborted;
+                    let timedOut;
+                
+                    currentGetSignal.onabort = () => {
+                        aborted = true;
+                    }
+
+                    const timeout = setTimeout(() => {
+                        timedOut = true;
+                        currentGetRequest.abort();
+                    }, 8000);
+                
+                    try {
+                        const response = await fetch("/organizations", {
+                            beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
+                            headers: {
+                                "Accept": 'application/json',
+                                'Content-Type': 'application/json',
+                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            method: "GET",
+                            signal: currentGetSignal,
+                        });
+
+                        const json = await response.json();
+                
+                        if (response.ok) {
+                            return Promise.resolve(json);
+                        }
+                
+                        // when there are validation errors, we head here
+                        throw json;
+                    } catch (errors) {
+                        let finalErrors = errors;
+                
+                        if (aborted) {
+                            if (timedOut) {
+                                finalErrors = ['Response timed out'];
+                            } else {
+                                console.log(errors);
+                                finalErrors = [];
+                            }
+                        }
+                
+                        return Promise.reject({ errors: finalErrors, aborted: aborted, timedOut: timedOut });
+                    } finally {
+                        clearTimeout(timeout);
+                    }
+                }
+
+                getWithTimeout().then(
+                    (successful) => {
+                    }, 
+                    (errors) => {
+                        const appError = errors.errors.app;
+
+                        // if the session token changes on the backend, log the current user out 
+                        if (appError !== undefined && appError[0] === "You must be signed in!") {
+                            this.props.logOut();
+                        }
+                    }
+                );
+            }, 3000)}
+        );
     }
 
     componentDidUpdate() {
@@ -56,8 +133,17 @@ class Header extends React.Component {
             // waiting for all organizations to be fetched first
             this.dropDownProjectsRef = React.createRef();
         }
+
     }
 
+    componentWillUnmount() {
+        clearInterval(this.state.currentInt);
+        
+        this.setState({
+            currentInt: undefined
+        });
+    }
+    
     hideInlineHeader() {
         this.setState({
             hideInlineHeader: true

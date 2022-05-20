@@ -44,15 +44,12 @@ function projectsReducer(state = defaultState, action) {
             const projectId = action.project.id;
 
             if (sortBy === "created" && recordType === "new") {
-                console.log("IM IN 1");
                 updatedState.allIds.unshift(projectId);
             } else if (!updatedState.toBeSorted.includes(projectId) && !updatedState.byId[projectId]) {
-                console.log("IM IN 2");
                 // this condition is only here to prevent selected recent projects from 
                 // entering toBeSortedBy multiple times leading to duplicate ids
                 recalibrateSort((id) => updatedState.byId[id], updatedState.allIds, action.project, sortBy, updatedState.toBeSorted);
             } else if (recordType === "update") {
-                console.log("IM IN 3");
                 updatedState.allIds.slice(updatedState.allIds.findIndex((id) => id === projectId), 1);
                 updatedState.toBeSorted.slice(updatedState.toBeSorted.findIndex((id) => id === projectId), 1);
 
